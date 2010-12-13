@@ -11,9 +11,11 @@ The goal of this technique is to deliver optimized, contextual image sizes in [r
 	(*if you already have an .htaccess file, you can paste its contents into your existing file)
 
 2. Reference "rwd-images.min.js" from your HTML (1.7kb minified, negligible when gzipped):
+
 	<script src="rwd-images/rwd-images.min.js"></script>
 	
 3. Add data-fullsrc attributes to any img elements that offer a larger desktop-friendly size:
+
 	<img src="small.jpg" data-fullsrc="large.jpg">
 	
 
@@ -33,6 +35,7 @@ Non-javascript enabled/supporting browsers/devices will currently receive the im
 ### Optional Configuration and Optimizations:
 
 2 options are available for external configuration: widthBreakPoint and ClientSideOnly. You can set these within a global "rwd_images" object that must be defined before rwd-images.js is loaded.
+
 	<script>
 		//configure options here:
 		var rwd_images = {};
@@ -40,6 +43,7 @@ Non-javascript enabled/supporting browsers/devices will currently receive the im
 
 ### Setting a different width breakpoint
 If you'd like to use a different width breakpoint than the 480px default:
+
 	<script>
 		//configure options here:
 		var rwd_images = {
