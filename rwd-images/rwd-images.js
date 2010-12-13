@@ -5,7 +5,7 @@
  * Dual licensed under the MIT or GPL Version 2 licenses. 
  * Check out the README.md file for instructions and optimizations
 */
-(function(win, undefined){
+(function(win){
 	//defaults / mixins
 	var	rwdi = (function(){
 			var defaults = {
