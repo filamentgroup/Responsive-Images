@@ -23,7 +23,7 @@
 		clientSideOnly = rwdi.clientSideOnly, 
 		widthBreakPoint = rwdi.widthBreakPoint,
 		wideload = screen.availWidth > widthBreakPoint,
-		filePath = location.protocol + "//" + location.host + location.pathname,
+		filePath = location.href,
 		dirPath = filePath.substring(0, filePath.lastIndexOf('/')) + '/',
 		doc = win.document,
 		head = doc.getElementsByTagName('head')[0],
