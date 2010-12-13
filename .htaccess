@@ -1,0 +1,11 @@
+# Responsive Images 
+# Mobile-First images that scale responsively and responsibly
+# Copyright 2010, Scott Jehl, Filament Group, Inc 
+# Dual licensed under the MIT or GPL Version 2 licenses. 
+# //Start Responsive Images 
+RewriteEngine On
+# direct image requests to temp
+RewriteRule ^rwd-image-trap/.*\.(jpg|jpeg|png|gif) rwd-images/rwd.gif
+#ignore trap for non-image requests, rewrite URL without trap segment
+RewriteRule ^rwd-image-trap/(.*\.(?!jpg|jpeg|png|gif)(.+)) $1
+# //End Responsive Images
