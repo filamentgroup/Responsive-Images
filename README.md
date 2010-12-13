@@ -16,7 +16,7 @@ The goal of this technique is to deliver optimized, contextual image sizes in [r
 	
 3. Add data-fullsrc attributes to any img elements that offer a larger desktop-friendly size:
 
-	<img src="small.jpg" data-fullsrc="large.jpg">
+	&lt;img src="small.jpg" data-fullsrc="large.jpg"&gt;
 	
 
 #### How's it work?
