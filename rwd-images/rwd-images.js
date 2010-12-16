@@ -55,9 +55,6 @@
 				if(fullsrc){
 					img.src = fullsrc;
 				}
-				else{
-					img.src = img.src;
-				}
 			}
 		},
 		//base tag support test (returns base tag for use if support test passes)

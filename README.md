@@ -14,13 +14,15 @@ The goal of this technique is to deliver optimized, contextual image sizes in [r
 
 	<script src="rwd-images/rwd-images.min.js"></script>
 	
-3. Add data-fullsrc attributes to any img elements that offer a larger desktop-friendly size:
+3. Add a data-fullsrc attribute to any img elements that offer a larger desktop-friendly size AND ALSO add an ".r" prefix to those images' file extensions in the src attribute ("small.jpg" becomes "small.r.jpg").
 
-	&lt;img src="small.jpg" data-fullsrc="large.jpg"&gt;
+	&lt;img src="small.r.jpg" data-fullsrc="large.jpg"&gt;
+	
+Note: the actual image file does not need the ".r" in its filename. The .htaccess will remove this when requesting the actual file.	
 	
 
 #### How's it work?
-As soon as rwd-images.js loads, it inserts a BASE element into the head of your page, directing all subsequent image, script, and stylesheet requests through a fictitious directory called "/rwd-image-trap/". As these requests reach the server, the .htaccess file determines whether the request is an image or not. It redirects image requests to rwd.gif (a transparent 1px gif image), while all non-image requests go to their proper destination through a URL rewrite that ignores the "/rwd-image-trap/" segment. When the HTML finishes loading, the script removes the BASE element from the DOM (resetting the base URL) and sets the image sources to either their small or large size (when specified), depending on whether the screen resolution is greater than 480px.
+As soon as rwd-images.js loads, it inserts a BASE element into the head of your page, directing all subsequent image, script, and stylesheet requests through a fictitious directory called "/rwd-image-trap/". As these requests reach the server, the .htaccess file determines whether the request is a responsive image or not (does it have a ".r.png", ".r.jpg" extension?). It redirects responsive image requests to rwd.gif (a transparent 1px gif image), while all non-responsive-image requests go to their proper destination through a URL rewrite that ignores the "/rwd-image-trap/" segment. When the HTML finishes loading, the script removes the BASE element from the DOM (resetting the base URL) and sets the image sources to either their small or large size (when specified), depending on whether the screen resolution is greater than 480px.
 
 ### Supported Browsers 
 Safari (desktop, iPhone, iPad), Chrome, Internet Explorer (8+), Opera
