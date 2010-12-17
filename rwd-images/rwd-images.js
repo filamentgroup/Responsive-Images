@@ -89,7 +89,7 @@
             		base.href = "javascript://";
             	}
             	else{
-            		base.href = dirPath +  "rwd-image-trap/";
+            		base.href = dirPath +  "rwd-router/";
             	}
             }
 	      return base;
