@@ -28,9 +28,6 @@
 		doc = win.document,
 		head = doc.getElementsByTagName('head')[0],
 		
-		//record existing window onload handler
-		winload = win.onload,
-		
 		//record width cookie for subsequent loads
 		recordRes = (function(){
 			var date = new Date();
@@ -93,18 +90,34 @@
             	}
             }
 	      return base;
-	    })();
+	    })(),
+	    
+	    //flag for whether loop has run already
+	    complete = false,
+	    
+	    //remove base if present, find/rep image srcs if wide enough (maybe make this happen at domready?)
+	    readyCallback = function(){
+	    	if( complete ){ return; }
+	    	complete = true;
+	    	if( base ) {
+				//set base back to something real before removing
+				base.href = dirPath;
+				head.removeChild(base);
+			}
+			findrepsrc();
+	    };
 	
-	//on load, remove base if present, find/rep image srcs if wide enough (maybe make this happen at domready?)
-	win.onload = function(){	
-		if( base ) {
-			//set base back to something real before removing
-			base.href = dirPath;
-			head.removeChild(base);
-		}
-		findrepsrc();
-		if( winload ){
-			winload();
-		}
-	};
+	//DOM-ready or onload handler
+	//W3C event model
+	if ( doc.addEventListener ) {
+		doc.addEventListener( "DOMContentLoaded", readyCallback, false );
+		//fallback
+		win.addEventListener( "load", readyCallback, false );
+	}
+	// If IE event model is used
+	else if ( doc.attachEvent ) {
+		doc.attachEvent("onreadystatechange", readyCallback );
+		//fallback
+		win.attachEvent( "onload", readyCallback );
+	}
 })(this);
