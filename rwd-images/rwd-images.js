@@ -99,12 +99,15 @@
 	    readyCallback = function(){
 	    	if( complete ){ return; }
 	    	complete = true;
-	    	if( base ) {
-				//set base back to something real before removing
-				base.href = dirPath;
-				head.removeChild(base);
-			}
-			findrepsrc();
+	    	//making this async seems to ensure images don't double request?
+	    	setTimeout(function(){
+		    	if( base ) {
+					//set base back to something real before removing
+					base.href = dirPath;
+					head.removeChild(base);
+				}
+				findrepsrc();
+			},0);
 	    };
 	
 	//DOM-ready or onload handler
