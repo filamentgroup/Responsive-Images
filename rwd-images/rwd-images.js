@@ -22,7 +22,7 @@
 		})(),		
 		clientSideOnly = rwdi.clientSideOnly, 
 		widthBreakPoint = rwdi.widthBreakPoint,
-		wideload = screen.availWidth > widthBreakPoint,
+		wideload = win.screen.availWidth > widthBreakPoint,
 		filePath = location.href,
 		dirPath = filePath.substring(0, filePath.lastIndexOf('/')) + '/',
 		doc = win.document,
