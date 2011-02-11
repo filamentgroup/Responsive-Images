@@ -59,7 +59,7 @@
 		base = (function(){
 			var backup,
 				baseAdded = false,
-				q = doc.createElement("q"),
+				a = doc.createElement("a"),
 				supported = false,
 				base = head.getElementsByTagName("base")[0] || (function(){
 	                baseAdded = true;
@@ -69,9 +69,9 @@
 	        backup = !baseAdded && base.href;   
 	        //test base support before using
             base.href = location.protocol + "//" + "x/";
-            q.cite = "y";
+            a.href = "y";
             //if dynamic base tag is unsupported (Firefox)
-            if(q.cite.indexOf("x/y") < 0 ){
+            if( a.href.indexOf("x/y") < 0 ){
             	if(backup){
             		base.href = backup;
             	}
