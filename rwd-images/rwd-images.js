@@ -48,9 +48,16 @@
 			for(var i = 0; i < il; i++){
 				var img = imgs[i],
 					fullsrc = img.getAttribute('data-fullsrc');
+					fullwidth = img.getAttribute('data-fullwidth');
+					fullheight = img.getAttribute('data-fullheight');
 					
 				if(fullsrc){
 					img.src = fullsrc;
+					img.width = fullwidth;
+					img.height = fullheight;
+					img.removeAttribute('data-fullsrc');
+					img.removeAttribute('data-fullwidth');
+					img.removeAttribute('data-fullheight');
 				}
 			}
 		},
