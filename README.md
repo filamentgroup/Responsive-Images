@@ -1,4 +1,4 @@
-# Responsive Images
+# Responsive Design Images
 ### Mobile-First Images that Scale Responsively & Responsibly
 
 ### What is this?
