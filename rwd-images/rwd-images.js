@@ -2,17 +2,21 @@
  * Responsive Images
  * Mobile-First images that scale responsively and responsibly
  * Copyright 2010, Scott Jehl, Filament Group, Inc
- * Dual licensed under the MIT or GPL Version 2 licenses. 
+ * MIT License
  * Check out the README.md file for instructions and optimizations
 */
 (function(win){
 	//defaults / mixins
 	var	rwdi = (function(){
 			var defaults = {
-				widthBreakPoint: 480
+				// this option assumes data- attributes aren't in use
+				// set to false if you need them (see README.md)
+				immediateRedirect:	true,
+				//default width for small/large images
+				widthBreakPoint:	480
 			};
 			//mixins from rwd_images global
-			if( 'rwd_images' in win ){
+			if( win.rwd_images ){
 				for (var setting in win.rwd_images) {
 			        defaults[setting] = win.rwd_images[setting];
 			    }
@@ -27,11 +31,11 @@
 		recordRes = (function(){
 			var date = new Date();
 		    date.setTime(date.getTime()+(1/*1 day*/*24*60*60*1000));
-		    doc.cookie = "rwd-imgsize="+ ( wideload ? "large" : "small" ) +"; expires=" + date.toGMTString() +"; path=/";
+		    doc.cookie = "rwdimgsize="+ ( wideload ? "large" : "small" ) +"; expires=" + date.toGMTString() +"; path=/";
 		})();
 
 		//if wideload is false quit now
-		if( !wideload ){
+		if( !wideload || rwdi.immediateRedirect === true ){
 			return;
 		}
 		

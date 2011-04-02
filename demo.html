@@ -2,33 +2,26 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Responsive Images Test Page</title>
-	<script>
-		/*
-		//optional: set config options here!
-		var rwd_images = { 
-			widthBreakPoint: 600,
-			clientSideOnly: true
-		};
-		*/
-	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Responsive Images Default Test Page</title>
 	<script src="rwd-images/rwd-images.js"></script>
 	<!-- demo styles -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		body { font-family: Helvetica, sans-serif; background: #222; color: #eee; margin: 20px auto; padding: 0 20px; max-width: 980px; }
-		img { border: 0; width: 100%; display: block; max-width: 100%; }
+		img { display: block; max-width: 100%; }
 		#cred { font-size: .7em; color: #aaa; }
 		a { color: #fff; }
 	</style>
 </head> 
 <body> 
 
-	<h1>Responsive Images Test Page</h1>
-	<p>In supported browsers, the following image will load either small or large version depending on screen resolution, making a single 1kb request before requesting the appropriate size.</p>
+	<h1>Responsive Images - Approach A</h1>
+	<p>The following image will automatically load either a small or large version depending on screen resolution, as long as cookies are enabled (non-cookie users will get the mobile size). This approach assumes your small and large image filenames are predictable (such as filename.jpg vs filename.large.jpg). If you don't have this flexibility, see <a href="demo-data/demo-data.html">Approach B</a></p>
+	
+	<p>Read more about this here: <a href="https://github.com/filamentgroup/Responsive-Images/tree/cookie-driven#readme">Responsive Images 2 Readme</a></p>
 
 	<!-- ADD THE "r." prefix to your image extension for any responsive images -->
-	<img src="sample-content/running-sml.r.jpg" data-fullsrc="sample-content/running-lrg.jpg">
+	<img src="sample-content/running.r.jpg">
 
 	<p id="cred"><strong>Photo credit (CC):</strong> Cia de Foto <a href="http://www.flickr.com/photos/ciadefoto/3192757134/in/pool-809956@N25/">Flickr Creative Commons</a></p>
 	
