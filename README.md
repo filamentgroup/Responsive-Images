@@ -5,9 +5,9 @@
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. The approach enables developers to start with mobile-optimized image references in their HTML that automatically loads a full-size image on larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
 ### What's new with this version?
-There are two versions of Responsive Images; this version is currently in testing, while the [original version can be found here](https://github.com/filamentgroup/Responsive-Images). The original does not require cookies, but it also does not work in as many browsers as this cookie-based approach either, so we're evaluating which to use based on project needs & limitations.
+There are two versions of Responsive Images; this version is currently in testing, while the [original version can be found here](https://github.com/filamentgroup/Responsive-Images). The original does not require cookies, but it also does not work in as many browsers as this cookie-based approach, so I'm assuming either could be appropriate depending on project needs & limitations.
 
-The cookie approach that this version uses was conceived by [Keith Clark](http://twitter.com/#!/keithclarkcouk/status/53807492957880320). This approach allows us to cut several workarounds out of our initial technique.
+The cookie workaround that this version of the script uses was conceived by [Keith Clark](http://twitter.com/#!/keithclarkcouk/status/53807492957880320). This approach allows us to cut several workarounds out of our initial technique.
 
 
 ### [Live demo](http://filamentgroup.com/examples/responsive-images-2/demo.html):
@@ -19,6 +19,8 @@ After viewing the demo, view the following links to see it working:
 * Large image: [http://filamentgroup.com/examples/responsive-images-2/sample-content/running.large.jpg](http://filamentgroup.com/examples/responsive-images-2/sample-content/running.large.jpg)
 * Responsive image (size depends on your screen width): [http://filamentgroup.com/examples/responsive-images-2/sample-content/running.r.jpg](http://filamentgroup.com/examples/responsive-images-2/sample-content/running.r.jpg)
 
+### Original Responsive Images Article:
+[http://filamentgroup.com/lab/responsive_images_experimenting_with_context_aware_image_sizing/](http://filamentgroup.com/lab/responsive_images_experimenting_with_context_aware_image_sizing/)
 
 ### New Instructions 
 _Note: you'll need an apache web server for the redirect approach provided._
