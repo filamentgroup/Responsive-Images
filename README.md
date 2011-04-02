@@ -4,10 +4,10 @@
 #### What is this?
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. The approach enables developers to start with mobile-optimized image references in their HTML that automatically loads a full-size image on larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
-### Live demo:
+### [Live demo](http://filamentgroup.com/examples/responsive-images-2/demo.html):
 See demo.html for implementation, or [view it live](http://filamentgroup.com/examples/responsive-images-2/demo.html)
 
-_While viewing, you can use your browser's dev inspector to view image requests. Also, the initial image referenced in the HTML can be viewed [here](http://filamentgroup.com/examples/responsive-images-2-demo-data/sample-content/running.jpg). This is the image that will load on screens smaller than 480px wide.
+_While viewing, you can use your browser's dev inspector to view image requests. Also, the initial image referenced in the HTML can be viewed [here](http://filamentgroup.com/examples/responsive-images-2-demo-data/sample-content/running.jpg). This is the image that will load on screens smaller than 480px wide._
 
 ### Notes on this version & hat tip
 There are two versions of Responsive Images. The first does not require cookies, but it does not work in as many browsers as this cookie-based approach either, so we're evaluating which to use based on project needs & limitations.
