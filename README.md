@@ -5,7 +5,9 @@
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. The approach enables developers to start with mobile-optimized image references in their HTML that automatically loads a full-size image on larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
 #### Live Demo (check resources to see):
+
 http://filamentgroup.com/examples/responsive-images-2/demo.html
+
 Note: to view the small version of the image on a large screen, you can open it without the "r." in the filename, or disable cookies and JavaScript and refresh.
 
 ### Notes on this version & hat tip
