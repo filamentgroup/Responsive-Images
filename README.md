@@ -4,6 +4,10 @@
 #### What is this?
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive layouts](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. Ideally, this could enable developers to start with mobile-optimized images in their HTML and specify a larger size to be used for users with larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
+### New Improved Version in testing!!
+Check out the new version for immediate image scaling and much better browser support:
+[https://github.com/filamentgroup/Responsive-Images/tree/cookie-driven#readme](https://github.com/filamentgroup/Responsive-Images/tree/cookie-driven#readme)
+
 ### Instructions 
 ##### * Note: you'll need an apache web server for this to work.
 
