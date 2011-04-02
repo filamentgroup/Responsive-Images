@@ -21,10 +21,7 @@
 		})(),		
 		widthBreakPoint = rwdi.widthBreakPoint,
 		wideload = win.screen.availWidth > widthBreakPoint,
-		filePath = location.href,
-		dirPath = filePath.substring(0, filePath.lastIndexOf('/')) + '/',
 		doc = win.document,
-		head = doc.getElementsByTagName('head')[0],
 		
 		//record width cookie for subsequent loads
 		recordRes = (function(){
@@ -52,54 +49,15 @@
 				}
 			}
 		},
-		//base tag support test (returns base tag for use if support test passes)
-			//originally used in the jQuery Mobile framework, converted to plain JS in the hasjs framework, modified for use here	
-		base = (function(){
-			var backup,
-				baseAdded = false,
-				a = doc.createElement("a"),
-				supported = false,
-				base = head.getElementsByTagName("base")[0] || (function(){
-	                baseAdded = true;
-	                return head.insertBefore(doc.createElement("base"), head.firstChild);
-	            })();
-	         
-	        backup = !baseAdded && base.href;   
-	        //test base support before using
-            base.href = location.protocol + "//" + "x/";
-            a.href = "y";
-            //if dynamic base tag is unsupported (Firefox)
-            if( a.href.indexOf("x/y") < 0 ){
-            	if(backup){
-            		base.href = backup;
-            	}
-            	else{
-            		head.removeChild(base);
-            	}
-            	base = null;
-            }
-            else{
-            	base.href = dirPath +  "rwd-router/";
-            }
-	      return base;
-	    })(),
-	    
+			    
 	    //flag for whether loop has run already
 	    complete = false,
 	    
-	    //remove base if present, find/rep image srcs if wide enough (maybe make this happen at domready?)
+	    //rfind/rep image srcs if wide enough (maybe make this happen at domready?)
 	    readyCallback = function(){
 	    	if( complete ){ return; }
 	    	complete = true;
-	    	//making this async seems to ensure images don't double request?
-	    	setTimeout(function(){
-		    	if( base ) {
-					//set base back to something real before removing
-					base.href = dirPath;
-					head.removeChild(base);
-				}
-				findrepsrc();
-			},0);
+	    	findrepsrc();
 	    };
 	
 	//DOM-ready or onload handler
