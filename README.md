@@ -7,7 +7,11 @@ The goal of this technique is to deliver optimized, contextual image sizes in [r
 ### [Live demo](http://filamentgroup.com/examples/responsive-images-2/demo.html):
 See demo.html for implementation, or [view it live](http://filamentgroup.com/examples/responsive-images-2/demo.html)
 
-_While viewing, you can use your browser's dev inspector to view image requests. Also, the initial image referenced in the HTML can be viewed [here](http://filamentgroup.com/examples/responsive-images-2-demo-data/sample-content/running.jpg). This is the image that will load on screens smaller than 480px wide._
+After viewing the demo, view the following links to see it working:
+
+* Small image: [http://filamentgroup.com/examples/responsive-images-2/sample-content/running.jpg](http://filamentgroup.com/examples/responsive-images-2/sample-content/running.jpg)
+* Large image: [http://filamentgroup.com/examples/responsive-images-2/sample-content/running.large.jpg](http://filamentgroup.com/examples/responsive-images-2/sample-content/running.large.jpg)
+* Responsive image (size depends on your screen width): [http://filamentgroup.com/examples/responsive-images-2/sample-content/running.r.jpg](http://filamentgroup.com/examples/responsive-images-2/sample-content/running.r.jpg)
 
 ### Notes on this version & a hat tip
 There are two versions of Responsive Images; this version is currently in testing, while the [original version can be found here](https://github.com/filamentgroup/Responsive-Images). The original does not require cookies, but it also does not work in as many browsers as this cookie-based approach either, so we're evaluating which to use based on project needs & limitations.
@@ -15,7 +19,7 @@ There are two versions of Responsive Images; this version is currently in testin
 The cookie approach that this version uses was conceived by [Keith Clark](http://twitter.com/#!/keithclarkcouk/status/53807492957880320). This approach allows us to cut several workarounds out of our initial technique.
 
 
-### Instructions 
+### New Instructions 
 _Note: you'll need an apache web server for the redirect approach provided._
 
 1. Add the ".htaccess"" file* and "rwd-images" folder into your root directory 
@@ -25,11 +29,13 @@ _Note: you'll need an apache web server for the redirect approach provided._
 
 	<script src="rwd-images/rwd-images.min.js"></script>
 	
-3. Add an ".r" prefix to all responsive images' file extensions in their src attribute ("small.jpg" becomes "small.r.jpg").Note: the actual image file does not need the ".r" in its filename. The .htaccess will remove this when requesting the actual file.
+3. Add an ".r" prefix to all responsive images' file extensions in their src attribute ("small.jpg" becomes "small.r.jpg"). _Note that the actual image file does not need the ".r" in its filename. The .htaccess will remove this when requesting the actual file._
 
     &lt;img src="filename.r.jpg"&gt;	
 
-4. Save the full size version of filename.jpg with a ".large" in the filename, before the extension (ie. filename.large.jpg)	
+4. Save the full-size version of filename.jpg with a ".large" in the filename, before the file extension (ie. filename.large.jpg)
+
+That's it!
 
 
 #### How's it work?
