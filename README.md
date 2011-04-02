@@ -9,10 +9,10 @@ See demo.html for implementation, or [view it live](http://filamentgroup.com/exa
 
 _While viewing, you can use your browser's dev inspector to view image requests. Also, the initial image referenced in the HTML can be viewed [here](http://filamentgroup.com/examples/responsive-images-2-demo-data/sample-content/running.jpg). This is the image that will load on screens smaller than 480px wide._
 
-### Notes on this version & hat tip
-There are two versions of Responsive Images. The first does not require cookies, but it does not work in as many browsers as this cookie-based approach either, so we're evaluating which to use based on project needs & limitations.
+### Notes on this version & a hat tip
+There are two versions of Responsive Images; this version is currently in testing, while the [original version can be found here](https://github.com/filamentgroup/Responsive-Images). The original does not require cookies, but it also does not work in as many browsers as this cookie-based approach either, so we're evaluating which to use based on project needs & limitations.
 
-The cookie-driven that this version uses was conceived by [Keith Clark](http://twitter.com/#!/keithclarkcouk/status/53807492957880320). This approach allows us to cut several workarounds out of our initial technique.
+The cookie approach that this version uses was conceived by [Keith Clark](http://twitter.com/#!/keithclarkcouk/status/53807492957880320). This approach allows us to cut several workarounds out of our initial technique.
 
 
 ### Instructions 
