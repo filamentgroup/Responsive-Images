@@ -4,25 +4,19 @@
 #### What is this?
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. The approach enables developers to start with mobile-optimized image references in their HTML that automatically loads a full-size image on larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
-#### [Live Demo](http://filamentgroup.com/examples/responsive-images-2/demo.html)
+### Live demo:
+See demo.html for implementation, or [view it live](http://filamentgroup.com/examples/responsive-images-2/demo.html)
 
-note: 
-- use your browser's dev inspector to view image requests
-- The initial image referenced can be viewed [here](http://filamentgroup.com/examples/responsive-images-2-demo-data/sample-content/running.jpg). Or you could clear your cookies and view the image referenced in the markup. 
+_While viewing, you can use your browser's dev inspector to view image requests. Also, the initial image referenced in the HTML can be viewed [here](http://filamentgroup.com/examples/responsive-images-2-demo-data/sample-content/running.jpg). This is the image that will load on screens smaller than 480px wide.
 
 ### Notes on this version & hat tip
 There are two versions of Responsive Images. The first does not require cookies, but it does not work in as many browsers as this cookie-based approach either, so we're evaluating which to use based on project needs & limitations.
 
-The cookie-driven approach that this branch is using was conceived by [Keith Clark](http://twitter.com/#!/keithclarkcouk/status/53807492957880320). This approach allows us to cut several workarounds out of our initial technique.
-
-### Non-cookie-based version
-For the non-cookie based approach:
-- Article: http://filamentgroup.com/lab/responsive_images_experimenting_with_context_aware_image_sizing/
-- Source Code: https://github.com/filamentgroup/Responsive-Images
+The cookie-driven that this version uses was conceived by [Keith Clark](http://twitter.com/#!/keithclarkcouk/status/53807492957880320). This approach allows us to cut several workarounds out of our initial technique.
 
 
 ### Instructions 
-##### * Note: you'll need an apache web server for the redirect approach provided.
+_Note: you'll need an apache web server for the redirect approach provided._
 
 1. Add the ".htaccess"" file* and "rwd-images" folder into your root directory 
 	(*if you already have an .htaccess file, you can paste its contents into your existing file)
@@ -31,16 +25,11 @@ For the non-cookie based approach:
 
 	<script src="rwd-images/rwd-images.min.js"></script>
 	
-3. Add an ".r" prefix to all responsive images' file extensions in their src attribute ("small.jpg" becomes "small.r.jpg").
+3. Add an ".r" prefix to all responsive images' file extensions in their src attribute ("small.jpg" becomes "small.r.jpg").Note: the actual image file does not need the ".r" in its filename. The .htaccess will remove this when requesting the actual file.
 
-	&lt;img src="filename.r.jpg"&gt;
-	
-Note: the actual image file does not need the ".r" in its filename. The .htaccess will remove this when requesting the actual file.	
+    &lt;img src="filename.r.jpg"&gt;	
 
 4. Save the full size version of filename.jpg with a ".large" in the filename, before the extension (ie. filename.large.jpg)	
-
-### Demo:
-See demo.html for implementation, or view it live: http://filamentgroup.com/examples/responsive-images-2/demo.html
 
 
 #### How's it work?
@@ -57,7 +46,7 @@ Non-javascript enabled/supporting browsers/devices will receive the image refere
 
 
 
-## Alternate Approach
+## Alternate Approach - Approach B
 If your image filenames are not predictable enough to use the ".large" naming convention, you can use this second approach, using data-fullsrc attribute to specify your larger filename.
 
 To use this approach, you'll need to take 2 steps in addition to the steps above:
@@ -106,6 +95,13 @@ If you'd like to use a different width breakpoint than the 480px default:
 			widthBreakPoint: 600
 		};
 	</script>
+	
+## Original, Non-cookie-based approach
+
+For the original responsive images technique, which doesn't use cookies:
+
+* Article: http://filamentgroup.com/lab/responsive_images_experimenting_with_context_aware_image_sizing/
+* Source Code: https://github.com/filamentgroup/Responsive-Images	
 
 #### Server-side Optimizations
 Regardless of approach A or B, a cookie is set by the script. For great optimization, you could use the presence of this cookie to choose not to load rwd-images.js at all, as long as you're using Approach A.
