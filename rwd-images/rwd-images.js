@@ -27,7 +27,7 @@
 		recordRes = (function(){
 			var date = new Date();
 		    date.setTime(date.getTime()+(1/*1 day*/*24*60*60*1000));
-		    doc.cookie = "rwd-resolution=" + screen.availWidth + "; expires=" + date.toGMTString() +"; path=/";
+		    doc.cookie = "rwd-imgsize="+ ( wideload ? "large" : "small" ) +"; expires=" + date.toGMTString() +"; path=/";
 		})();
 
 		//if wideload is false quit now
