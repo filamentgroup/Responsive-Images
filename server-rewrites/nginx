@@ -1,0 +1,10 @@
+# //Start Responsive Images 
+
+# direct image requests to temp
+rewrite .*rwd-router/.*\.r\.(jpe?g|png|gif)$ /rwd-images/rwd.gif last;
+# ignore trap for non-image requests, rewrite URL without trap segment
+rewrite (.*)rwd-router/(.*)$ $1$2;
+# remove .r from all requests
+rewrite (.*)\.r(\.(jpe?g|png|gif))$ $1$2 last;
+
+# //End Responsive Images
