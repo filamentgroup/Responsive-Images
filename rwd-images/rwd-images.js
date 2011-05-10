@@ -10,7 +10,8 @@
 	var	rwdi = (function(){
 			var defaults = {
 				clientSideOnly: false,
-				widthBreakPoint: 480
+				widthBreakPoint: 480,
+				testImageWidths: false
 			};
 			//mixins from rwd_images global
 			if( 'rwd_images' in win ){
@@ -36,7 +37,7 @@
 		})();
 
 		//if wideload is false quit now
-		if( !wideload ){
+		if( !wideload && !rwdi.testImageWidths ){
 			return;
 		}
 		
@@ -50,7 +51,12 @@
 					fullsrc = img.getAttribute('data-fullsrc');
 					
 				if(fullsrc){
-					img.src = fullsrc;
+					var imageSizeOk = (img.width <= img.getAttribute("width"));
+					if(rwdi.testImageWidths && imageSizeOk){
+						img.src = img.src;
+					} else {
+						img.src = fullsrc;
+					}
 				}
 			}
 		},
