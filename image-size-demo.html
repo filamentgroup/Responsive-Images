@@ -4,13 +4,10 @@
 	<meta charset="utf-8" />
 	<title>Responsive Images Test Page</title>
 	<script>
-		/*
 		//optional: set config options here!
 		var rwd_images = { 
-			widthBreakPoint: 600,
-			clientSideOnly: true
+			testImageWidths: true
 		};
-		*/
 	</script>
 	<script src="rwd-images/rwd-images.js"></script>
 	<!-- demo styles -->
@@ -20,17 +17,20 @@
 		img { border: 0; width: 100%; display: block; max-width: 100%; }
 		#cred { font-size: .7em; color: #aaa; }
 		a { color: #fff; }
+		.minimal { max-width: 50%; margin: 20px auto;}
 	</style>
 </head> 
 <body> 
 
 	<h1>Responsive Images Test Page</h1>
-	<p>In supported browsers, the following image will load either small or large version depending on screen resolution, making a single 1kb request before requesting the appropriate size.</p>
+	<p>In supported browsers, the following images will load either small or large versions depending on the size they need to be rendered at, making a single 1kb request before requesting the appropriate size.</p>
 
 	<!-- ADD THE "r." prefix to your image extension for any responsive images -->
-	<img src="sample-content/running-sml.r.jpg" data-fullsrc="sample-content/running-lrg.jpg">
+	<img src="sample-content/running-sml.r.jpg" width="320" data-fullsrc="sample-content/running-lrg.jpg">
+
+	<img src="sample-content/running-sml.r.jpg" width="320" data-fullsrc="sample-content/running-lrg.jpg" class="minimal">
 
 	<p id="cred"><strong>Photo credit (CC):</strong> Cia de Foto <a href="http://www.flickr.com/photos/ciadefoto/3192757134/in/pool-809956@N25/">Flickr Creative Commons</a></p>
-	
+
 </body>
 </html>
