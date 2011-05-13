@@ -78,7 +78,8 @@
 		testAndUpdateImage = function(img) {
 			if(img.offsetWidth <= img.getAttribute("width")){
 				// TODO: Why is this needed?
-				img.src = img.src.replace(".r", "");
+				// Change the small src otherwise browser thinks it's cached.
+				img.src = img.src.replace(".r", ""); // FIXME: Too brittle.
 			} else {
 				img.src = img.getAttribute('data-fullsrc');
 			}
