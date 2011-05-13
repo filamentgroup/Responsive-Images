@@ -32,6 +32,10 @@
 		//record width cookie for subsequent loads
 		recordRes = (function(){
 			var date = new Date();
+			// Generic cookie that we can delete onload.
+			date.setTime(date.getTime()+(1/*1 sec*/*1000))
+			doc.cookie = "rwd=y; expires=" + date.toGMTString() +"; path=/";
+			// Screen width cookie
 			date.setTime(date.getTime()+(1/*1 day*/*24*60*60*1000));
 			doc.cookie = "rwd-resolution=" + screen.availWidth + "; expires=" + date.toGMTString() +"; path=/";
 		})();
@@ -74,54 +78,11 @@
 		testAndUpdateImage = function(img) {
 			if(img.offsetWidth <= img.getAttribute("width")){
 				// TODO: Why is this needed?
-				img.src = img.src;
+				img.src = img.src.replace(".r", "");
 			} else {
 				img.src = img.getAttribute('data-fullsrc');
 			}
 		}
-
-		//base tag support test (returns base tag for use if support test passes)
-			//originally used in the jQuery Mobile framework, converted to plain JS in the hasjs framework, modified for use here	
-		base = (function(){
-			var backup,
-				baseAdded = false,
-				a = doc.createElement("a"),
-				supported = false,
-				base = head.getElementsByTagName("base")[0] || (function(){
-					baseAdded = true;
-					return head.insertBefore(doc.createElement("base"), head.firstChild);
-				})();
-
-			backup = !baseAdded && base.href;
-			//test base support before using
-			base.href = location.protocol + "//" + "x/";
-			a.href = "y";
-			//if dynamic base tag is unsupported (Firefox)
-			if( a.href.indexOf("x/y") < 0 ){
-				if(backup){
-					base.href = backup;
-				}
-				else{
-					head.removeChild(base);
-				}
-				base = null;
-			}
-			else{
-				if(clientSideOnly){
-					//more info up top, use with caution!
-					base.href = "javascript://";
-				}
-				else{
-					var href = dirPath + "rwd-router/";
-					var pathDepth = location.pathname.split("/").length - 2;
-					for (var i = 0, j = pathDepth; i<j; ++i) {
-						href += "/";
-					}
-					base.href = href;
-				}
-			}
-		  return base;
-		})(),
 
 		//flag for whether loop has run already
 		complete = false,
@@ -132,11 +93,7 @@
 			complete = true;
 			//making this async seems to ensure images don't double request?
 			setTimeout(function(){
-				if( base ) {
-					//set base back to something real before removing
-					base.href = dirPath;
-					head.removeChild(base);
-				}
+				doc.cookie = "rwd=; expires=expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/";
 				findrepsrc();
 			},0);
 		};
