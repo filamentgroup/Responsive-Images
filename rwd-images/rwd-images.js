@@ -112,7 +112,12 @@
 					base.href = "javascript://";
 				}
 				else{
-					base.href = dirPath +  "rwd-router/";
+					var href = dirPath + "rwd-router/";
+					var pathDepth = location.pathname.split("/").length - 1;
+					for (var i = 0, j = pathDepth; i<j; ++i) {
+						href += "/";
+					}
+					base.href = href;
 				}
 			}
 		  return base;
