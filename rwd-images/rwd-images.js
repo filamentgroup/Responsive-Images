@@ -113,7 +113,7 @@
 				}
 				else{
 					var href = dirPath + "rwd-router/";
-					var pathDepth = location.pathname.split("/").length - 1;
+					var pathDepth = location.pathname.split("/").length - 2;
 					for (var i = 0, j = pathDepth; i<j; ++i) {
 						href += "/";
 					}
