@@ -11,7 +11,7 @@
 
     // Set cookie to return 1x1 gif
     var date = new Date();
-    date.setTime(date.getTime()+(1/*1 sec*/*1000));
+    date.setTime(date.getTime()+(5/*5 sec*/*1000));
     doc.cookie = "rwd=y; expires=" + date.toGMTString() +"; path=/";
 
     // Find and replace img elements
@@ -46,7 +46,7 @@
     function domLoadedCallback() {
         if( domLoaded ) { return; }
         domLoaded = true;
-        doc.cookie = "rwd=; expires=expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/";
+        doc.cookie = "rwd=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/";
         findImages();
     };
 
