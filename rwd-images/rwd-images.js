@@ -8,6 +8,22 @@
         
     var doc = win.document,
         domLoaded = false;
+    
+    //defaults / mixins
+    var options = (function(){
+        var defaults = {
+            translateUrl: function(url) {
+                return url.replace("-sml.", "-lrg.");
+            }
+        };
+        //mixins from rwd_images global
+        if( 'rwd_options' in win ) {
+            for (var setting in win.rwd_options) {
+                defaults[setting] = win.rwd_options[setting];
+            }
+        }
+        return defaults;
+    })();
 
     // Set cookie to return 1x1 gif
     var date = new Date();
@@ -39,7 +55,12 @@
             // Both URLs need to change to cache bust.
             img.src = img.src.split("?")[0];
         } else {
-            img.src = img.src.split("?large=")[1];
+            // If we have a value after r, then use it.
+            if (img.src.indexOf("?r=") != -1) {
+                img.src = img.src.split("?r=")[1];
+            } else {
+                img.src = options.translateUrl(img.src.split("?")[0]);
+            }
         }
     }
     

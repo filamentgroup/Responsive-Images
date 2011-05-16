@@ -7,4 +7,5 @@ RewriteEngine On
 
 # If cookie exists, JS is supported and we rewrite image requests.
 RewriteCond %{HTTP:Cookie} rwd=y
+RewriteCond %{QUERY_STRING} ^r=?.*$
 RewriteRule .*\.(jpe?g|png|gif)$ rwd-images/rwd.gif [L]
