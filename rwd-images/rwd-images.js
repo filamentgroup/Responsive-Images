@@ -1,117 +1,67 @@
 /*!
  * Responsive Images
- * Mobile-First images that scale responsively and responsibly
- * Copyright 2010, Scott Jehl, Filament Group, Inc
- * Dual licensed under the MIT or GPL Version 2 licenses. 
- * Check out the README.md file for instructions and optimizations
+ * Images that scale responsively based on their rendered size.
+ * Based on code Copyright 2010, Scott Jehl, Filament Group, Inc
+ * Dual licensed under the MIT or GPL Version 2 licenses.
 */
 (function(win){
-	//defaults / mixins
-	var rwdi = (function(){
-			var defaults = {
-				clientSideOnly: false,
-				widthBreakPoint: 480,
-				testImageWidths: false
-			};
-			//mixins from rwd_images global
-			if( 'rwd_images' in win ){
-				for (var setting in win.rwd_images) {
-					defaults[setting] = win.rwd_images[setting];
-				}
-			}
-			return defaults;
-		})(),
-		clientSideOnly = rwdi.clientSideOnly, 
-		widthBreakPoint = rwdi.widthBreakPoint,
-		wideload = win.screen.availWidth > widthBreakPoint,
-		filePath = location.href,
-		dirPath = filePath.substring(0, filePath.lastIndexOf('/')) + '/',
-		doc = win.document,
-		head = doc.getElementsByTagName('head')[0],
-		
-		//record width cookie for subsequent loads
-		recordRes = (function(){
-			var date = new Date();
-			// Generic cookie that we can delete onload.
-			date.setTime(date.getTime()+(1/*1 sec*/*1000))
-			doc.cookie = "rwd=y; expires=" + date.toGMTString() +"; path=/";
-			// Screen width cookie
-			date.setTime(date.getTime()+(1/*1 day*/*24*60*60*1000));
-			doc.cookie = "rwd-resolution=" + screen.availWidth + "; expires=" + date.toGMTString() +"; path=/";
-		})();
+        
+    var doc = win.document,
+        domLoaded = false;
 
-		//if wideload is false quit now
-		if( !wideload && !rwdi.testImageWidths ){
-			return;
-		}
+    // Set cookie to return 1x1 gif
+    var date = new Date();
+    date.setTime(date.getTime()+(1/*1 sec*/*1000));
+    doc.cookie = "rwd=y; expires=" + date.toGMTString() +"; path=/";
 
-		//find and replace img elements
-		var findrepsrc = function(){
-			var imgs = doc.getElementsByTagName('img'),
-				il = imgs.length;
-				
-			for(var i = 0; i < il; i++){
-				var img = imgs[i],
-					fullsrc = img.getAttribute('data-fullsrc');
+    // Find and replace img elements
+    function findImages() {
+        var imgs = doc.getElementsByTagName('img');
+        for (var i = 0, j = imgs.length; i < j; ++i) {
+            var img = imgs[i];
+            // If 1x1 image hasn't loaded yet, add a load event listener.
+            // If we don't wait for load, image reports wrong size.
+            if (!img.complete) {
+                // Don't need to support old IE event model here, because we've
+                // already waited for images.
+                img.addEventListener("load", function() {
+                    this.removeEventListener("load", arguments.callee, false);
+                    testAndReplaceImage(this);
+                }, false);
+            } else {
+                testAndReplaceImage(img);
+            }
+        }
+    }
 
-				if(fullsrc){
-					if(!rwdi.testImageWidths) {
-						img.src = fullsrc
-					} else 
-					// If image hasn't loaded yet, add a load event listener.
-					// If we don't wait for load, image reports wrong size.
-					if (!img.complete) {
-						// Don't need to support IE event model here, because we've
-						// already waited for images.
-						img.addEventListener("load", function() {
-							this.removeEventListener("load", arguments.callee, false);
-							testAndUpdateImage(this);
-						}, false);
-					} else {
-						testAndUpdateImage(img);
-					}
-				}
-			}
-		},
+    function testAndReplaceImage(img) {
+        if (img.offsetWidth <= img.getAttribute("width")) {
+            // Both URLs need to change to cache bust.
+            img.src = img.src.split("?")[0];
+        } else {
+            img.src = img.src.split("?large=")[1];
+        }
+    }
+    
+    function domLoadedCallback() {
+        if( domLoaded ) { return; }
+        domLoaded = true;
+        doc.cookie = "rwd=; expires=expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/";
+        findImages();
+    };
 
-		//update an image src if its width is smaller than its rendered width. 
-		testAndUpdateImage = function(img) {
-			if(img.offsetWidth <= img.getAttribute("width")){
-				// TODO: Why is this needed?
-				// Change the small src otherwise browser thinks it's cached.
-				img.src = img.src.replace(".r", ""); // FIXME: Too brittle.
-			} else {
-				img.src = img.getAttribute('data-fullsrc');
-			}
-		}
-
-		//flag for whether loop has run already
-		complete = false,
-
-		//remove base if present, find/rep image srcs if wide enough (maybe make this happen at domready?)
-		readyCallback = function(){
-			if( complete ){ return; }
-			complete = true;
-			//making this async seems to ensure images don't double request?
-			setTimeout(function(){
-				doc.cookie = "rwd=; expires=expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/";
-				findrepsrc();
-			},0);
-		};
-
-	//DOM-ready or onload handler
-	//W3C event model
-	if ( doc.addEventListener ) {
-		doc.addEventListener( "DOMContentLoaded", readyCallback, false );
-		//fallback
-		win.addEventListener( "load", readyCallback, false );
-	}
-	//If IE event model is used
-	else if ( doc.attachEvent ) {
-		//FIX: This is firing before the images are ready in the DOM in IE8,
-		//Wwich is fine for screen res check, but not image size check.
-		//doc.attachEvent("onreadystatechange", readyCallback );
-		//fallback
-		win.attachEvent( "onload", readyCallback );
-	}
+    // Add ready event, if W3C event model
+    if ( doc.addEventListener ) {
+        doc.addEventListener( "DOMContentLoaded", domLoadedCallback, false );
+        //fallback
+        win.addEventListener( "load", domLoadedCallback, false );
+    }
+    // Add ready event, if IE event model
+    else if ( doc.attachEvent ) {
+        // FIX: This is firing before the images are ready in the DOM in IE8,
+        // Which is fine for screen res check, but not image size check.
+        // doc.attachEvent("onreadystatechange", readyCallback );
+        // fallback
+        win.attachEvent( "onload", domLoadedCallback );
+    }
 })(this);

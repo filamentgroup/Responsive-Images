@@ -1,13 +1,10 @@
-# Responsive Images 
-# Mobile-First images that scale responsively and responsibly
-# Copyright 2010, Scott Jehl, Filament Group, Inc 
-# Dual licensed under the MIT or GPL Version 2 licenses. 
-# //Start Responsive Images 
-RewriteEngine On
-# If cookie exists, JS is supported and we rewrite image requests.
-RewriteCond %{HTTP:Cookie} (^|;\ *)rwd=([^;\ ]+) 
-RewriteRule .*\.r\.(jpe?g|png|gif)$ rwd-images/rwd.gif [L]
+# Responsive Images
+# Images that scale responsively based on their rendered size.
+# Based on code Copyright 2010, Scott Jehl, Filament Group, Inc
+# Dual licensed under the MIT or GPL Version 2 licenses.
 
-# remove .r from all requests
-RewriteRule (.*)\.r(\.(jpe?g|png|gif))$ $1$2
-# //End Responsive Images
+RewriteEngine On
+
+# If cookie exists, JS is supported and we rewrite image requests.
+RewriteCond %{HTTP:Cookie} rwd=y
+RewriteRule .*\.(jpe?g|png|gif)$ rwd-images/rwd.gif [L]
