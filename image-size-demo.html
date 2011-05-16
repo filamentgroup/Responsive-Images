@@ -6,7 +6,7 @@
     <script>
         var rwd_options = {
             translateUrl: function(url) {
-                return url.replace(/\.(.*)$/, function(str, p1) {
+                return url.replace(/\.(jpe?g|png|gif)$$/, function(str, p1) {
                     return "@2x." + p1;
                 })
             }
