@@ -16,13 +16,13 @@ The goal of this technique is to deliver optimized, contextual image sizes in [r
 	
 3. You determine which images you want to behave responsively in one of two ways:
 
-	a) Add a query string to the image URL which references the location of the larger image on the server.
+a) Add a query string to the image URL which references the location of the larger image on the server.
 	
-	<img src="/small.jpg?r=/large.jpg" />
+	&lt;img src="/small.jpg?r=/large.jpg" /&gt;
 
-	b) Add a ?r to the image URL, and then set a translateUrl function in the configuration.
+b) Add a ?r to the image URL, and then set a translateUrl function in the configuration.
 	
-	<img src="/small.jpg?r" />
+	&lt;img src="/small.jpg?r" /&gt;
 	
 	<script>
 		var rwd_options = {
