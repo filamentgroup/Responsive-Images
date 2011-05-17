@@ -2,7 +2,9 @@
 ### An Experiment with Content Aware Images that Scale Responsively
 
 #### What is this?
-The goal of this technique is to deliver optimized, contextual image sizes in [responsive layouts](http://www.alistapart.com/articles/responsive-web-design/) that utilize different image sizes depending on what size the image is going to be rendered in the browser in a responsive layout.
+The goal of this technique is to deliver optimized, contextual image sizes in [responsive layouts](http://www.alistapart.com/articles/responsive-web-design/) that utilize different image sizes depending on what size the image is going to be rendered at in the browser in a responsive layout.
+
+This builds on <a href="https://github.com/filamentgroup/Responsive-Images/">work by Scott Jehl</a>.
 
 ### Instructions 
 ##### * Note: you'll need an apache web server for this to work.
