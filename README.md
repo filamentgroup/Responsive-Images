@@ -18,11 +18,11 @@ The goal of this technique is to deliver optimized, contextual image sizes in [r
 
 a) Add a query string to the image URL which references the location of the larger image on the server.
 	
-	&lt;img src="/small.jpg?r=/large.jpg" /&gt;
+	<img src="/small.jpg?r=/large.jpg" />
 
 b) Add a ?r to the image URL, and then set a translateUrl function in the configuration.
 	
-	&lt;img src="/small.jpg?r" /&gt;
+	<img src="/small.jpg?r" />
 	
 	<script>
 		var rwd_options = {
