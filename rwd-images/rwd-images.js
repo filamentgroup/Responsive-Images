@@ -35,17 +35,19 @@
         var imgs = doc.getElementsByTagName('img');
         for (var i = 0, j = imgs.length; i < j; ++i) {
             var img = imgs[i];
-            // If 1x1 image hasn't loaded yet, add a load event listener.
-            // If we don't wait for load, image reports wrong size.
-            if (!img.complete) {
-                // Don't need to support old IE event model here, because we've
-                // already waited for images.
-                img.addEventListener("load", function() {
-                    this.removeEventListener("load", arguments.callee, false);
-                    testAndReplaceImage(this);
-                }, false);
-            } else {
-                testAndReplaceImage(img);
+            if (img.src.indexOf("?r") > 0) {
+                // If 1x1 image hasn't loaded yet, add a load event listener.
+                // If we don't wait for load, image reports wrong size.
+                if (!img.complete) {
+                    // Don't need to support old IE event model here, because we've
+                    // already waited for images.
+                    img.addEventListener("load", function() {
+                        this.removeEventListener("load", arguments.callee, false);
+                        testAndReplaceImage(this);
+                    }, false);
+                } else {
+                    testAndReplaceImage(img);
+                }
             }
         }
     }
