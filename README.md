@@ -1,12 +1,8 @@
 ## Responsive Images
-### An Experiment with Mobile-First Images that Scale Responsively & Responsibly
+### An Experiment with Content Aware Images that Scale Responsively
 
 #### What is this?
-The goal of this technique is to deliver optimized, contextual image sizes in [responsive layouts](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. Ideally, this could enable developers to start with mobile-optimized images in their HTML and specify a larger size to be used for users with larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
-
-### New Improved Version in testing!!
-Check out the new version for immediate image scaling and much better browser support:
-[https://github.com/filamentgroup/Responsive-Images/tree/cookie-driven#readme](https://github.com/filamentgroup/Responsive-Images/tree/cookie-driven#readme)
+The goal of this technique is to deliver optimized, contextual image sizes in [responsive layouts](http://www.alistapart.com/articles/responsive-web-design/) that utilize different image sizes depending on what size the image is going to be rendered in the browser in a responsive layout.
 
 ### Instructions 
 ##### * Note: you'll need an apache web server for this to work.
@@ -14,73 +10,30 @@ Check out the new version for immediate image scaling and much better browser su
 1. Add the ".htaccess"" file* and "rwd-images" folder into your root directory 
 	(*if you already have an .htaccess file, you can paste its contents into your existing file)
 
-2. Reference "rwd-images.min.js" from your HTML (1.7kb minified, negligible when gzipped):
+2. Reference "rwd-images.js" from your HTML:
 
-	<script src="rwd-images/rwd-images.min.js"></script>
+	<script src="rwd-images/rwd-images.js"></script>
 	
-3. Add a data-fullsrc attribute to any img elements that offer a larger desktop-friendly size AND ALSO add an ".r" prefix to those images' file extensions in the src attribute ("small.jpg" becomes "small.r.jpg").
+3. You determine which images you want to behave responsively in one of two ways:
 
-	&lt;img src="small.r.jpg" data-fullsrc="large.jpg"&gt;
+	a) Add a query string to the image URL which references the location of the larger image on the server.
 	
-Note: the actual image file does not need the ".r" in its filename. The .htaccess will remove this when requesting the actual file.	
+	<img src="/small.jpg?r=/large.jpg" />
+
+	b) Add a ?r to the image URL, and then set a translateUrl function in the configuration.
 	
+	<img src="/small.jpg?r" />
+	
+	<script>
+		var rwd_options = {
+			translateUrl: function(url) {
+				return url.replace(/\.(jpe?g|png|gif)$$/, function(str, p1) {
+					return "@2x." + p1;
+				})
+			}
+		};
+	</script>
 
-#### How's it work?
-As soon as rwd-images.js loads, it inserts a BASE element into the head of your page, directing all subsequent image, script, and stylesheet requests through a fictitious directory called "/rwd-router/". As these requests reach the server, the .htaccess file determines whether the request is a responsive image or not (does it have a ".r.png", ".r.jpg" extension?). It redirects responsive image requests to rwd.gif (a transparent 1px gif image), while all non-responsive-image requests go to their proper destination through a URL rewrite that ignores the "/rwd-router/" segment. When the HTML finishes loading, the script removes the BASE element from the DOM (resetting the base URL) and sets the image sources to either their small or large size (when specified), depending on whether the screen resolution is greater than 480px.
-
-### Supported Browsers 
-Safari (desktop, iPhone, iPad), Chrome, Internet Explorer (8+), Opera. Firefox 4
-
-### Support Caveats: 
-Firefox 3.6-, IE 6/7, etc
-##### Note: 
-Unsupported browsers still receive responsive images; the drawback is that both image sizes are requested, so there's additional overhead on the initial request on the desktop. That aside, subsequent page visits can make use of a cookie that is set in all browsers to serve the appropriate size from the start.
 
 ### Non-Javascript Browsers
-Non-javascript enabled/supporting browsers/devices will currently receive the image referenced in the image src attribute (minus the ".r" of course)
-
-### Optional Configuration and Optimizations:
-
-2 options are available for external configuration: widthBreakPoint and ClientSideOnly. You can set these within a global "rwd_images" object that must be defined before rwd-images.js is loaded.
-
-	<script>
-		//configure options here:
-		var rwd_images = {};
-	</script>
-
-### Setting a different width breakpoint
-If you'd like to use a different width breakpoint than the 480px default:
-
-	<script>
-		//configure options here:
-		var rwd_images = {
-			//set the width breakpoint to 600px instead of 480px
-			widthBreakPoint: 600
-		};
-	</script>
-
-#### Preventing all unnecessary image requests
-If you are able to guarantee that your BODY element contains 
-		no relative references to scripts, stylesheets (link elements), objects, 
-		or anything else that makes an http request the moment they load (in other words, relative links (anchor elements) aren't a problem),
-		then you can set the clientSideOnly argument to true, which will prevent all unnecessary requests from going out to the server. This is ideal, but difficult to support as a default.
-
-	<script>
-		//configure options here:
-		var rwd_images = {
-			//set clientSideOnly flag to true - preventing all unnecessary requests!
-			ClientSideOnly: true
-		};
-	</script>
-
-#### Server-side Optimizations
-A cookie is set by the script so that on subsequent page loads you can set your images an appropriate source from the start and 
-choose not to load the script at all. 
-
-The cookie looks like this (where 1440 is the screen resolution):
-"rwd-resolution=1440"
-
-#### License & Disclaimer
- - Dual licensed under the MIT or GPL Version 2 licenses. 
- - Copyright 2010, Scott Jehl & Filament Group, Inc
- - This project is experimental. Please fork and contribute!
+Non-javascript enabled/supporting browsers/devices will currently receive the image referenced in the image src attribute.
