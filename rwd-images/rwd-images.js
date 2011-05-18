@@ -10,7 +10,8 @@
 	var	rwdi = (function(){
 			var defaults = {
 				clientSideOnly: false,
-				widthBreakPoint: 480
+				widthBreakPoint: 480,
+				htmlClass: "rwd-imgs-lrg"
 			};
 			//mixins from rwd_images global
 			if( 'rwd_images' in win ){
@@ -39,6 +40,9 @@
 		if( !wideload ){
 			return;
 		}
+		
+		//add HTML class
+		doc.documentElement.className += " " + rwdi.htmlClass;
 		
 		//find and replace img elements
 		var findrepsrc = function(){
