@@ -4,29 +4,23 @@
 #### What is this?
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive layouts](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. Ideally, this could enable developers to start with mobile-optimized images in their HTML and specify a larger size to be used for users with larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
-### New Improved Version in testing!!
-Check out the new version for immediate image scaling and much better browser support:
-[https://github.com/filamentgroup/Responsive-Images/tree/cookie-driven#readme](https://github.com/filamentgroup/Responsive-Images/tree/cookie-driven#readme)
 
 ### Instructions 
 ##### * Note: you'll need an apache web server for this to work.
 
-1. Add the ".htaccess"" file* and "rwd-images" folder into your root directory 
-	(*if you already have an .htaccess file, you can paste its contents into your existing file)
+1. Add the ".htaccess"" file* to your web server public rootfile's head (OR if you already have an .htaccess file, you can paste its contents into your existing file)
 
-2. Reference "rwd-images.min.js" from your HTML (1.7kb minified, negligible when gzipped):
+2. Grab "responsiveimgs.min.js" and reference it from your HTML in the HEAD of your document:
 
 	<script src="rwd-images/rwd-images.min.js"></script>
 	
-3. Add a data-fullsrc attribute to any img elements that offer a larger desktop-friendly size AND ALSO add an ".r" prefix to those images' file extensions in the src attribute ("small.jpg" becomes "small.r.jpg").
+3. For any img elements that offer a larger desktop-friendly size, reference the larger image's src via a ?full= query string on the image url. Note that the path after ?full= should be written so it works directly as the src attribute as well (in other words, include the same path info you need for the small version)
 
-	&lt;img src="small.r.jpg" data-fullsrc="large.jpg"&gt;
-	
-Note: the actual image file does not need the ".r" in its filename. The .htaccess will remove this when requesting the actual file.	
+	&lt;img src="small.jpg?full=large.jpg" &gt;	
 	
 
 #### How's it work?
-As soon as rwd-images.js loads, it inserts a BASE element into the head of your page, directing all subsequent image, script, and stylesheet requests through a fictitious directory called "/rwd-router/". As these requests reach the server, the .htaccess file determines whether the request is a responsive image or not (does it have a ".r.png", ".r.jpg" extension?). It redirects responsive image requests to rwd.gif (a transparent 1px gif image), while all non-responsive-image requests go to their proper destination through a URL rewrite that ignores the "/rwd-router/" segment. When the HTML finishes loading, the script removes the BASE element from the DOM (resetting the base URL) and sets the image sources to either their small or large size (when specified), depending on whether the screen resolution is greater than 480px.
+As soon as rwd-images.js loads, it tests the screen width, and if it's large, it inserts a BASE element into the head of your page, directing all subsequent image, script, and stylesheet requests through a fictitious directory called "/rwd-router/". As these requests reach the server, the .htaccess file determines whether the request is a responsive image or not (does it have a ?full query parameter?). It redirects responsive image requests immediately to their full size, while all non-responsive-image requests go to their proper destination through a URL rewrite that ignores the "/rwd-router/" segment. 
 
 ### Supported Browsers 
 Safari (desktop, iPhone, iPad), Chrome, Internet Explorer (8+), Opera. Firefox 4
