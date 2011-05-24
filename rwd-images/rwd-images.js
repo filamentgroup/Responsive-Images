@@ -5,23 +5,22 @@
  * Dual licensed under the MIT or GPL Version 2 licenses. 
  * Check out the README.md file for instructions and optimizations
 */
-(function(win){
+(function( win ){
 	//defaults / mixins
-	var	rwdi = win.rwd_images || {},
-		htmlClass = "rwd-imgs-lrg",
-		widthBreakPoint = rwdi.widthBreakPoint || 480,
-		wideload = win.screen.availWidth > widthBreakPoint,
-		filePath = location.href,
-		dirPath = filePath.substring(0, filePath.lastIndexOf('/')) + '/',
-		doc = win.document,
-		head = doc.getElementsByTagName('head')[0],
+	var	rwdi			= win.rwd_images || {},
+		widthBreakPoint	= rwdi.widthBreakPoint || 480,
+		htmlClass		= "rwd-imgs-lrg",
+		wideload		= win.screen.availWidth > widthBreakPoint,
+		filePath		= location.href,
+		dirPath			= filePath.substring( 0, filePath.lastIndexOf( "/" ) ) + "/",
+		doc				= win.document,
+		head			= doc.getElementsByTagName( "head" )[0],
 		
 		//record width cookie for subsequent loads
-		recordRes = (function(){
-			var date = new Date();
+		recordRes		= (function( date ){
 		    date.setTime(date.getTime()+(1/*1 day*/*24*60*60*1000));
 		    doc.cookie = "rwd-resolution=" + screen.availWidth + "; expires=" + date.toGMTString() +"; path=/";
-		})();
+		})( new Date() );
 
 		//if wideload is false quit now
 		if( !wideload ){
@@ -33,12 +32,12 @@
 		
 		//find and replace img elements
 		var findrepsrc = function(){
-			var imgs = doc.getElementsByTagName('img'),
+			var imgs = doc.getElementsByTagName( "img" ),
 				il = imgs.length;
 				
 			for(var i = 0; i < il; i++){
 				var img = imgs[i],
-					fullsrc = img.getAttribute('data-fullsrc');
+					fullsrc = img.getAttribute("data-fullsrc");
 					
 				if(fullsrc){
 					img.src = fullsrc;
