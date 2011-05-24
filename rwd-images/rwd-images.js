@@ -17,10 +17,9 @@
 		head			= doc.getElementsByTagName( "head" )[0],
 		
 		//record width cookie for subsequent loads
-		recordRes		= (function( date ){
-		    date.setTime(date.getTime()+(1/*1 day*/*24*60*60*1000));
-		    doc.cookie = "rwd-resolution=" + screen.availWidth + "; expires=" + date.toGMTString() +"; path=/";
-		})( new Date() );
+		date			= new Date();
+		date.setTime(date.getTime()+(5/*5 sec*/*1000));
+		doc.cookie = "rwd=y; expires=" + date.toGMTString() +"; path=/";
 
 		//if wideload is false quit now
 		if( !wideload ){
