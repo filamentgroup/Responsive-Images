@@ -9,7 +9,6 @@
 	//defaults / mixins
 	var	rwdi = (function(){
 			var defaults = {
-				clientSideOnly: false,
 				widthBreakPoint: 480,
 				htmlClass: "rwd-imgs-lrg"
 			};
@@ -21,7 +20,6 @@
 			}
 			return defaults;
 		})(),		
-		clientSideOnly = rwdi.clientSideOnly, 
 		widthBreakPoint = rwdi.widthBreakPoint,
 		wideload = win.screen.availWidth > widthBreakPoint,
 		filePath = location.href,
@@ -85,13 +83,7 @@
             	base = null;
             }
             else{
-            	if(clientSideOnly){
-            		//more info up top, use with caution!
-            		base.href = "javascript://";
-            	}
-            	else{
-            		base.href = dirPath +  "rwd-router/";
-            	}
+            	base.href = dirPath +  "rwd-router/";
             }
 	      return base;
 	    })(),

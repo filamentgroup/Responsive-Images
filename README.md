@@ -41,7 +41,7 @@ Non-javascript enabled/supporting browsers/devices will currently receive the im
 
 ### Optional Configuration and Optimizations:
 
-2 options are available for external configuration: widthBreakPoint and ClientSideOnly. You can set these within a global "rwd_images" object that must be defined before rwd-images.js is loaded.
+1 option is available for external configuration: widthBreakPoint. You can set it within a global "rwd_images" object that must be defined before rwd-images.js is loaded.
 
 	<script>
 		//configure options here:
@@ -59,19 +59,6 @@ If you'd like to use a different width breakpoint than the 480px default:
 		};
 	</script>
 
-#### Preventing all unnecessary image requests
-If you are able to guarantee that your BODY element contains 
-		no relative references to scripts, stylesheets (link elements), objects, 
-		or anything else that makes an http request the moment they load (in other words, relative links (anchor elements) aren't a problem),
-		then you can set the clientSideOnly argument to true, which will prevent all unnecessary requests from going out to the server. This is ideal, but difficult to support as a default.
-
-	<script>
-		//configure options here:
-		var rwd_images = {
-			//set clientSideOnly flag to true - preventing all unnecessary requests!
-			ClientSideOnly: true
-		};
-	</script>
 
 #### Server-side Optimizations
 A cookie is set by the script so that on subsequent page loads you can set your images an appropriate source from the start and 
