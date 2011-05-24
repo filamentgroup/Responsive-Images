@@ -9,8 +9,7 @@
 	//defaults / mixins
 	var	rwdi = (function(){
 			var defaults = {
-				widthBreakPoint: 480,
-				htmlClass: "rwd-imgs-lrg"
+				widthBreakPoint: 480
 			};
 			//mixins from rwd_images global
 			if( 'rwd_images' in win ){
@@ -19,7 +18,8 @@
 			    }
 			}
 			return defaults;
-		})(),		
+		})(),
+		htmlClass = "rwd-imgs-lrg",
 		widthBreakPoint = rwdi.widthBreakPoint,
 		wideload = win.screen.availWidth > widthBreakPoint,
 		filePath = location.href,
@@ -40,7 +40,7 @@
 		}
 		
 		//add HTML class
-		doc.documentElement.className += " " + rwdi.htmlClass;
+		doc.documentElement.className += " " + htmlClass;
 		
 		//find and replace img elements
 		var findrepsrc = function(){
