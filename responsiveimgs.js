@@ -28,7 +28,7 @@
 		doc.documentElement.className += " " + htmlClass;
 		
 		//base tag support test (returns base tag for use if support test passes) creds: jQuery Mobile, hasJS
-		var base = (function(){
+		var base		= (function(){
 			var backup,
 				baseAdded = false,
 				a = doc.createElement("a"),
@@ -62,7 +62,7 @@
 	    })(),
 	    
 	    //find and replace img elements
-		findrepsrc = function(){
+		findrepsrc		= function(){
 			for( var i = 0, imgs = doc.getElementsByTagName( "img" ), il = imgs.length; i < il; i++){
 				var img		= imgs[i],
 					src		= img.getAttribute( "src" ),
@@ -75,10 +75,10 @@
 		},
 		
 		//flag for whether loop has run already
-	    complete = false,
+	    complete		= false,
 	    
 	    //remove base if present, find/rep image srcs if wide enough (maybe make this happen at domready?)
-	    readyCallback = function(){
+	    readyCallback	= function(){
 	    	if( complete ){ return; }
 	    	complete = true;
 
