@@ -27,24 +27,26 @@
 		//add HTML class
 		doc.documentElement.className += " " + htmlClass;
 		
-		//base tag support test (returns base tag for use if support test passes)	
+		//base tag support test (returns base tag for use if support test passes) creds: jQuery Mobile, hasJS
 		var base = (function(){
 			var backup,
 				baseAdded = false,
 				a = doc.createElement("a"),
 				supported = false,
-				base = head.getElementsByTagName("base")[0] || (function(){
+				base = head.getElementsByTagName( "base" )[0] || (function(){
 	                baseAdded = true;
-	                return head.insertBefore(doc.createElement("base"), head.firstChild);
+	                return head.insertBefore( doc.createElement("base"), head.firstChild );
 	            })();
 	         
 	        backup = !baseAdded && base.href;   
+	        
 	        //test base support before using
             base.href = location.protocol + "//" + "x/";
             a.href = "y";
+            
             //if dynamic base tag is unsupported (Firefox)
-            if( a.href.indexOf("x/y") < 0 ){
-            	if(backup){
+            if( a.href.indexOf( "x/y" ) < 0 ){
+            	if( backup ){
             		base.href = backup;
             	}
             	else{
@@ -55,8 +57,47 @@
             else{
             	base.href = dirPath +  "rwd-router/";
             }
-	      return base;
-	    })();
+            //return 
+			return base;
+	    })(),
 	    
+	    //find and replace img elements
+		findrepsrc = function(){
+			for( var i = 0, imgs = doc.getElementsByTagName( "img" ), il = imgs.length; i < il; i++){
+				var img		= imgs[i],
+					src		= img.getAttribute( "src" ),
+					full	= src.match( /(\?|&)full=(.*)&?/ ) && RegExp.$2;
+					
+				if( full ){
+					img.src = full;
+				}
+			}
+		},
+		
+		//flag for whether loop has run already
+	    complete = false,
+	    
+	    //remove base if present, find/rep image srcs if wide enough (maybe make this happen at domready?)
+	    readyCallback = function(){
+	    	if( complete ){ return; }
+	    	complete = true;
 
+	    	if( !base ) {
+				findrepsrc();
+			}
+	    };
+	
+	//DOM-ready or onload handler
+	//W3C event model
+	if ( doc.addEventListener ) {
+		doc.addEventListener( "DOMContentLoaded", readyCallback, false );
+		//fallback
+		win.addEventListener( "load", readyCallback, false );
+	}
+	// If IE event model is used
+	else if ( doc.attachEvent ) {
+		doc.attachEvent( "onreadystatechange", readyCallback );
+		//fallback
+		win.attachEvent( "onload", readyCallback );
+	}
 })(this);
