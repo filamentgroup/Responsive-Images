@@ -55,7 +55,7 @@
             	base = null;
             }
             else{
-            	base.href = dirPath +  "rwd-router/";
+            	base.href = dirPath +  "rwd-" + screen.width + "x" + screen.height + "/";
             }
             //return 
 			return base;
