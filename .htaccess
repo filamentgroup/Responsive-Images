@@ -5,9 +5,8 @@
 # //Start Responsive Images 
 RewriteEngine On
 # direct image requests to temp
-RewriteRule .*rwd-router/.*\.r\.(jpe?g|png|gif)$ rwd-images/rwd.gif [L]
+RewriteCond %{QUERY_STRING} full=(.*)&?
+RewriteRule (.*)rwd-router/.*\.(jpe?g|png|gif) $1%1 [L]
 # ignore trap for non-image requests, rewrite URL without trap segment
 RewriteRule (.*)rwd-router/(.*)$ $1$2
-# remove .r from all requests
-RewriteRule (.*)\.r(\.(jpe?g|png|gif))$ $1$2
 # //End Responsive Images

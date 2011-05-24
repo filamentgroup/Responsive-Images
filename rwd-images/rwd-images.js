@@ -30,23 +30,8 @@
 		//add HTML class
 		doc.documentElement.className += " " + htmlClass;
 		
-		//find and replace img elements
-		var findrepsrc = function(){
-			var imgs = doc.getElementsByTagName( "img" ),
-				il = imgs.length;
-				
-			for(var i = 0; i < il; i++){
-				var img = imgs[i],
-					fullsrc = img.getAttribute("data-fullsrc");
-					
-				if(fullsrc){
-					img.src = fullsrc;
-				}
-			}
-		},
-		//base tag support test (returns base tag for use if support test passes)
-			//originally used in the jQuery Mobile framework, converted to plain JS in the hasjs framework, modified for use here	
-		base = (function(){
+		//base tag support test (returns base tag for use if support test passes)	
+		var base = (function(){
 			var backup,
 				baseAdded = false,
 				a = doc.createElement("a"),
@@ -74,37 +59,7 @@
             	base.href = dirPath +  "rwd-router/";
             }
 	      return base;
-	    })(),
+	    })();
 	    
-	    //flag for whether loop has run already
-	    complete = false,
-	    
-	    //remove base if present, find/rep image srcs if wide enough (maybe make this happen at domready?)
-	    readyCallback = function(){
-	    	if( complete ){ return; }
-	    	complete = true;
-	    	//making this async seems to ensure images don't double request?
-	    	setTimeout(function(){
-		    	if( base ) {
-					//set base back to something real before removing
-					base.href = dirPath;
-					head.removeChild(base);
-				}
-				findrepsrc();
-			},0);
-	    };
-	
-	//DOM-ready or onload handler
-	//W3C event model
-	if ( doc.addEventListener ) {
-		doc.addEventListener( "DOMContentLoaded", readyCallback, false );
-		//fallback
-		win.addEventListener( "load", readyCallback, false );
-	}
-	// If IE event model is used
-	else if ( doc.attachEvent ) {
-		doc.attachEvent("onreadystatechange", readyCallback );
-		//fallback
-		win.attachEvent( "onload", readyCallback );
-	}
+
 })(this);
