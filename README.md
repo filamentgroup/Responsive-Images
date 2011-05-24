@@ -31,7 +31,7 @@ Firefox 3.6-, IE 6/7, etc
 Unsupported browsers still receive responsive images; the drawback is that both image sizes are requested, so there's additional overhead on the initial request on the desktop. That aside, subsequent page visits can make use of a cookie that is set in all browsers to serve the appropriate size from the start.
 
 ### Non-Javascript Browsers
-Non-javascript enabled/supporting browsers/devices will currently receive the image referenced in the image src attribute (minus the ".r" of course)
+Non-javascript enabled/supporting browsers/devices will receive the initial image referenced in the image src attribute (the mobile version)
 
 ### Optional Configuration and Optimizations:
 
