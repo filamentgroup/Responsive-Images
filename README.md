@@ -20,7 +20,7 @@ The goal of this technique is to deliver optimized, contextual image sizes in [r
 	
 
 #### How's it work?
-As soon as rwd-images.js loads, it tests the screen width, and if it's large, it inserts a BASE element into the head of your page, directing all subsequent image, script, and stylesheet requests through a fictitious directory called "/rwd-router/". As these requests reach the server, the .htaccess file determines whether the request is a responsive image or not (does it have a ?full query parameter?). It redirects responsive image requests immediately to their full size, while all non-responsive-image requests go to their proper destination through a URL rewrite that ignores the "/rwd-router/" segment. 
+As soon as rwd-images.js loads, it tests the screen width, and if it's large, it inserts a BASE element into the head of your page, directing all subsequent image, script, and stylesheet requests through a fictitious directory with the naming convention "/rwd-[SCREENWIDTH]x[SCREENHEIGHT]/" (which plays out to something like "/rwd-460x800/" or whatever the screen's resolution happens to be). As these requests reach the server, the .htaccess file determines whether the request is a responsive image or not (does it have a ?full query parameter?). It redirects responsive image requests immediately to their full size, while all non-responsive-image requests go to their proper destination through a URL rewrite that ignores the faux routing segment. 
 
 ### Supported Browsers 
 Safari (desktop, iPhone, iPad), Chrome, Internet Explorer (8+), Opera. Firefox 4
@@ -32,6 +32,11 @@ Unsupported browsers still receive responsive images; the drawback is that both 
 
 ### Non-Javascript Browsers
 Non-javascript enabled/supporting browsers/devices will receive the initial image referenced in the image src attribute (the mobile version)
+
+### Redirecting to more meaningful image sizes
+If you'd like to cater your large image size to be no larger than the device's screen resolution, you can modify the .htaccess rewrite to utilize the width and height values. Then you can use a server-side solution to dynamically generate images that are sized appropriately. In the rewrite, the width and height values are available through the $2 and $3 values, respectively. Just use them in your rewrite destination and handle things as you'd like on the server. For example, your could redirect to something like: /imageserver/w-$2/h-$3/src-%1 or potentially use a third-party service as well.
+
+
 
 ### Optional Configuration and Optimizations:
 
