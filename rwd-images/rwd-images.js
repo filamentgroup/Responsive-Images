@@ -7,20 +7,9 @@
 */
 (function(win){
 	//defaults / mixins
-	var	rwdi = (function(){
-			var defaults = {
-				widthBreakPoint: 480
-			};
-			//mixins from rwd_images global
-			if( 'rwd_images' in win ){
-				for (var setting in win.rwd_images) {
-			        defaults[setting] = win.rwd_images[setting];
-			    }
-			}
-			return defaults;
-		})(),
+	var	rwdi = win.rwd_images || {},
 		htmlClass = "rwd-imgs-lrg",
-		widthBreakPoint = rwdi.widthBreakPoint,
+		widthBreakPoint = rwdi.widthBreakPoint || 480,
 		wideload = win.screen.availWidth > widthBreakPoint,
 		filePath = location.href,
 		dirPath = filePath.substring(0, filePath.lastIndexOf('/')) + '/',
