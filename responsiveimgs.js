@@ -19,7 +19,7 @@
 		//record width cookie for subsequent loads
 		date			= new Date();
 		date.setTime(date.getTime()+(5/*5 sec*/*1000));
-		doc.cookie = "rwd=y; expires=" + date.toGMTString() +"; path=/";
+		doc.cookie = "rwd-resolution=" + screen.width + ";expires=" + date.toGMTString() +"; path=/";
 
 		//if wideload is false quit now
 		if( !wideload ){
