@@ -85,6 +85,9 @@
 	    	if( !base ) {
 				findrepsrc();
 			}
+			else{
+				head.removeChild(base);
+			}
 	    };
 	
 	//DOM-ready or onload handler
