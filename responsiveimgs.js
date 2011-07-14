@@ -93,14 +93,10 @@
 	//DOM-ready or onload handler
 	//W3C event model
 	if ( doc.addEventListener ) {
-		doc.addEventListener( "DOMContentLoaded", readyCallback, false );
-		//fallback
 		win.addEventListener( "load", readyCallback, false );
 	}
 	// If IE event model is used
 	else if ( doc.attachEvent ) {
-		doc.attachEvent( "onreadystatechange", readyCallback );
-		//fallback
 		win.attachEvent( "onload", readyCallback );
 	}
 })(this);
