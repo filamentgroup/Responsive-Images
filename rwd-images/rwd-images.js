@@ -75,7 +75,8 @@
 
     // Add ready event, if W3C event model
     if ( doc.addEventListener ) {
-        doc.addEventListener( "DOMContentLoaded", domLoadedCallback, false );
+        // This is firing before the image requests are made, which is too early.
+        //doc.addEventListener( "DOMContentLoaded", domLoadedCallback, false );
         //fallback
         win.addEventListener( "load", domLoadedCallback, false );
     }
