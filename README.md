@@ -21,11 +21,12 @@ _Note: you'll need an apache web server for the redirect approach provided._
 
 2. Reference "responsive-images.js" from your HTML:
 
-    <script src="responsive-images.js"></script>
+    &lt;script src="responsive-images.js"&gt;&lt;/script&gt;
 	
 3. Reference any "responsive" images in the src attribute of your img tags. You should reference the mobile size first, and then the paths to medium and large sizes via query parameters, like so:
 
-    <img src="_imgs/running.jpg?medium=_imgs_/running.medium.jpg&large=_imgs/running.large.jpg">	
+
+    &lt;img src="_imgs/running.jpg?medium=_imgs_/running.medium.jpg&large=_imgs/running.large.jpg"&gt;	
 
 That's it! A demo of this approach is in the demos/A-default/ folder, or [here on Filament's site](http://filamentgroup.com/examples/responsive-images-new/demos/A-Default/demo.html)
 
@@ -81,4 +82,3 @@ The following options are available for external configuration:
  - MIT License
  - Copyright 2011, Scott Jehl & Filament Group, Inc
  - Please fork and contribute!
-
