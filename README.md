@@ -4,8 +4,8 @@
 ### What is this?
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. The approach enables developers to start with mobile-optimized image references in their HTML that automatically loads a larger image on larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
-### [Live demo](http://filamentgroup.com/examples/responsive-images-new/demos/A-default/demo.html):
-See the demos folder for implementation, or [view it live](http://filamentgroup.com/examples/responsive-images-new/demos/A-default/demo.html)
+### [Live demo](http://filamentgroup.com/examples/responsive-images-new/demos/A-Default/demo.html):
+See the demos folder for implementation, or [view it live](http://filamentgroup.com/examples/responsive-images-new/demos/A-Default/demo.html)
 
 Note that since responsive images rely on screen size rather than window size, you'll need to try the demos on different devices to see its effect.
 
@@ -27,7 +27,7 @@ _Note: you'll need an apache web server for the redirect approach provided._
 
     &lt;img src="_imgs/running.jpg?medium=_imgs_/running.medium.jpg&large=_imgs/running.large.jpg"&gt;	
 
-That's it! A demo of this approach is in the demos/A-default/ folder, or [here on Filament's site](http://filamentgroup.com/examples/responsive-images-new/demos/A-default/demo.html)
+That's it! A demo of this approach is in the demos/A-default/ folder, or [here on Filament's site](http://filamentgroup.com/examples/responsive-images-new/demos/A-Default/demo.html)
 
 #### Minor cleaner variation
 If your images all reside in the same directory, you can skip writing the entire paths to the medium and large references, just specifying the filename instead.
