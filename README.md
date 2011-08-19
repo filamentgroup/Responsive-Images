@@ -21,11 +21,11 @@ _Note: you'll need an apache web server for the redirect approach provided._
 
 2. Reference "responsive-images.js" from your HTML:
 
-	<script src="responsive-images.js"></script>
+    <script src="responsive-images.js"></script>
 	
 3. Reference any "responsive" images in the src attribute of your img tags. You should reference the mobile size first, and then the paths to medium and large sizes via query parameters, like so:
 
-    &lt;img src="_imgs/running.jpg?medium=_imgs_/running.medium.jpg&large=_imgs/running.large.jpg"&gt;	
+    <img src="_imgs/running.jpg?medium=_imgs_/running.medium.jpg&large=_imgs/running.large.jpg">	
 
 That's it! A demo of this approach is in the demos/A-default/ folder, or [here on Filament's site](http://filamentgroup.com/examples/responsive-images-new/demos/A-Default/demo.html)
 
@@ -33,7 +33,7 @@ That's it! A demo of this approach is in the demos/A-default/ folder, or [here o
 If your images all reside in the same directory, you can skip writing the entire paths to the medium and large references, just specifying the filename instead.
 With this approach, the image path above looks like this instead:
 
-    &lt;img src="_imgs/running.jpg?medium=running.medium.jpg&large=running.large.jpg"&gt;
+    <img src="_imgs/running.jpg?medium=running.medium.jpg&large=running.large.jpg">
 
 A demo of this approach is in the demos/B-same-image-paths/ folder, or [here on Filament's site](http://filamentgroup.com/examples/responsive-images-new/demos/B-same-image-paths/demo.html)
 
@@ -56,12 +56,12 @@ Non-javascript or cookie enabled/supporting browsers/devices will receive the im
 Several configuration options are available in responsive images.
 You can set options by including a script element BEFORE the reference to responsive images, which defines options in a variable called responsive_images. Values should be specified in object literal format, as shown below.
 
-	<script>
-		//configure options here:
-		var responsive_images = {
-			"foo": "bar"
-		};
-	</script>
+    <script>
+        //configure options here:
+        var responsive_images = {
+            foo": "bar"
+        };
+    </script>
 	
 The following options are available for external configuration: 
 
