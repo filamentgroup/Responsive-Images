@@ -74,7 +74,7 @@ The following options are available for external configuration:
 
 - cookieDomain: The domain that the cookie may be retreived. Default: <code>location.host && location.host.match( /[^\.]+\.[^\.]+$/ )</code>. Note that this usally evaluates to something like "example.com"
 
-- subdomainAccess: Allow access to the cookie on subdomains of the cookieDomain. Default: true when cookieDomain is a valid "example.com" format
+- subdomainAccess: Allow access to the cookie on subdomains of the cookieDomain. Default: false
 
 - cookiePath: The path on the cookieDomain where the cookie is valid. Default: <code>"/"</code>
 

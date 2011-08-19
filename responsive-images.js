@@ -22,7 +22,7 @@
 		cookieDomain = def.cookieDomain || location.host && location.host.match( /[^\.]+\.[^\.]+$/ ),
 		
 		// Allow access to cookie on subdomains
-		subdomainAccess = def.subdomainAccess || cookieDomain && cookieDomain.indexOf( "." ) > 0,
+		subdomainAccess = def.subdomainAccess || false,
 		
 		// Reset cookieDomain with subDomain access, if true
 		cookieDomain = subdomainAccess ? "." + cookieDomain : cookieDomain,
