@@ -15,7 +15,7 @@ _Note: the approach has changed slightly since this article was published. Follo
 
 ### Instructions 
 _Note: you'll need an apache web server for the redirect approach provided._
-
+ 
 1. Add the ".htaccess"" file* into your root directory (found in demos/A-Default/ folder)
 	(*if you already have an .htaccess file, you can paste its contents into your existing file)
 
