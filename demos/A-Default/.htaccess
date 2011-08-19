@@ -1,0 +1,23 @@
+# ----------------------------------------------------------------------
+# Responsive Images
+# ----------------------------------------------------------------------
+# Mobile-First images that scale responsively and responsibly
+# Copyright 2011, Scott Jehl, Filament Group, Inc 
+# MIT License
+
+# -----------------------------------------
+# Start Responsive Images 
+# -----------------------------------------
+RewriteEngine On
+
+RewriteCond %{HTTP_COOKIE} rwd-screensize=large
+RewriteCond %{QUERY_STRING} large=([^&]+)
+RewriteRule .* %1
+
+RewriteCond %{HTTP_COOKIE} rwd-screensize=medium
+RewriteCond %{QUERY_STRING} medium=([^&]+)
+RewriteRule .* %1
+
+# -----------------------------------------
+# END Responsive Images
+# -----------------------------------------

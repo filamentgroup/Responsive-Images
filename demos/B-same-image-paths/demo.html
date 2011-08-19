@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Responsive Images Default Test Page</title>
+	<script src="../../responsive-images.js"></script>
+	<!-- demo styles -->
+	<style>
+		body { font-family: Helvetica, sans-serif; background: #222; color: #eee; margin: 20px auto; padding: 0 20px; max-width: 980px; }
+		img { display: block; max-width: 100%; }
+		#cred { font-size: .7em; color: #aaa; }
+		a { color: #fff; }
+	</style>
+</head> 
+<body> 
+
+	<h1>Responsive Images - Approach A</h1>
+	<p>The following image will automatically load either a small or large version depending on screen resolution, as long as cookies are enabled (non-cookie or non-JS users will get the mobile size regardless of screen size). </p>
+
+	<img src="_imgs/running.jpg?medium=running.medium.jpg&amp;large=running.large.jpg">
+
+	<p id="cred"><strong>Photo credit (CC):</strong> Cia de Foto <a href="http://www.flickr.com/photos/ciadefoto/3192757134/in/pool-809956@N25/">Flickr Creative Commons</a></p>
+	
+</body>
+</html>
