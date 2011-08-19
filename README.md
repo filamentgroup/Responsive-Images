@@ -2,9 +2,9 @@
 ### Mobile-First Images that Scale Responsively & Responsibly
 
 ### What is this?
-The goal of this technique is to deliver optimized, contextual image sizes in [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. The approach enables developers to start with mobile-optimized image references in their HTML that automatically loads a full-size image on larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
+The goal of this technique is to deliver optimized, contextual image sizes in [responsive web designs](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. The approach enables developers to start with mobile-optimized image references in their HTML that automatically loads a larger image on larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
 
-### [Live demo](http://filamentgroup.com/examples/responsive-images-2/demo.html):
+### [Live demo](http://filamentgroup.com/examples/responsive-images-new/demos/A-default/demo.html):
 See the demos folder for implementation, or [view it live](http://filamentgroup.com/examples/responsive-images-new/demos/A-default/demo.html)
 
 Note that since responsive images rely on screen size rather than window size, you'll need to try the demos on different devices to see its effect.
