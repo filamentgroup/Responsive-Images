@@ -53,7 +53,8 @@
     }
 
     function testAndReplaceImage(img) {
-        if (img.offsetWidth <= img.getAttribute("width")) {
+        var width = img.getAttribute("data-width") || img.getAttribute("width");
+        if (img.offsetWidth <= width) {
             // Both URLs need to change to cache bust.
             img.src = img.src.split("?")[0];
         } else {

@@ -20,11 +20,11 @@ This builds on <a href="https://github.com/filamentgroup/Responsive-Images/">wor
 
 a) Add a query string to the image URL which references the location of the larger image on the server.
 	
-	<img src="/small.jpg?r=/large.jpg" />
+	<img src="/small.jpg?r=/large.jpg" width="120" />
 
 b) Add a ?r to the image URL, and then set a translateUrl function in the configuration.
 	
-	<img src="/small.jpg?r" />
+	<img src="/small.jpg?r" width="120" />
 	
 	<script>
 		var rwd_options = {
@@ -35,7 +35,12 @@ b) Add a ?r to the image URL, and then set a translateUrl function in the config
 			}
 		};
 	</script>
+	
+Make sure you add a `width` attribute to the image which matches the real width of the image in pixels.
 
+
+### Browser support
+To support IE 6/7, you must also include a `data-width` attribute the value of which should match the `width` attribute. If you do not so this, these browsers will receive the low src image.
 
 ### Non-Javascript Browsers
-Non-javascript enabled/supporting browsers/devices will currently receive the image referenced in the image src attribute.
+Non-javascript enabled/supporting browsers/devices will receive the low src image.
