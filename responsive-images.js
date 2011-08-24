@@ -19,13 +19,7 @@
 		cookieAge = def.cookieAge || 30000,
 		
 		// Domain that cookie will affect
-		cookieDomain = def.cookieDomain || location.host && location.host.match( /[^\.]+\.[^\.]+$/ ),
-		
-		// Allow access to cookie on subdomains
-		subdomainAccess = def.subdomainAccess || false,
-		
-		// Reset cookieDomain with subDomain access, if true
-		cookieDomain = subdomainAccess ? "." + cookieDomain : cookieDomain,
+		cookieDomain = def.cookieDomain,
 		
 		// Path for cookies on domain
  		cookiePath = def.cookiePath || "/",
@@ -36,7 +30,7 @@
 		    date.setTime( date.getTime() + cookieAge );
 		    doc.cookie = cookieName + "=" + cookieValue + ";" +
 				"expires=" + date.toGMTString() + ";" +
-				"path=" + cookiePath + ";" +
-				( cookieDomain ? "domain=" + cookieDomain : "");
+				(cookiePath ? "path=" + cookiePath + ";" : "" ) +
+				( cookieDomain ? "domain=" + cookieDomain + ";" : "");
 		})();
 })(this);
