@@ -72,9 +72,7 @@ The following options are available for external configuration:
 
 - cookieAge: The number of milliseconds the cookie should stay valid. Default: <code>30000</code>
 
-- cookieDomain: The domain that the cookie may be retreived. Default: <code>location.host && location.host.match( /[^\.]+\.[^\.]+$/ )</code>. Note that this usally evaluates to something like "example.com"
-
-- subdomainAccess: Allow access to the cookie on subdomains of the cookieDomain. Default: false
+- cookieDomain: The domain that the cookie may be retreived. Default: domain being accessed
 
 - cookiePath: The path on the cookieDomain where the cookie is valid. Default: <code>"/"</code>
 
