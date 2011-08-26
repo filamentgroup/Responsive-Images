@@ -9,11 +9,15 @@
 # Start Responsive Images 
 # -----------------------------------------
 RewriteEngine On
-
+#large cookie, large image
 RewriteCond %{HTTP_COOKIE} rwd-screensize=large
 RewriteCond %{QUERY_STRING} large=([^&]+)
 RewriteRule (.*\/).*\.(jpe?g|png|gif|webp) $1%1
-
+#medium cookie, medium image
+RewriteCond %{HTTP_COOKIE} rwd-screensize=medium
+RewriteCond %{QUERY_STRING} medium=([^&]+)
+RewriteRule (.*\/).*\.(jpe?g|png|gif|webp) $1%1
+#large cookie, medium image
 RewriteCond %{HTTP_COOKIE} rwd-screensize=medium
 RewriteCond %{QUERY_STRING} medium=([^&]+)
 RewriteRule (.*\/).*\.(jpe?g|png|gif|webp) $1%1
