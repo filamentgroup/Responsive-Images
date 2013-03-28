@@ -1,5 +1,32 @@
+# Note: Project no longer recommended!
+
+We recommend you use picturefill instead. https://github.com/scottjehl/picturefill
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Old Readme, kept for historic purposes:
+
 ## Responsive Images
 ### An Experiment with Mobile-First Images that Scale Responsively & Responsibly
+
+
+
+
 
 #### What is this?
 The goal of this technique is to deliver optimized, contextual image sizes in [responsive layouts](http://www.alistapart.com/articles/responsive-web-design/) that utilize dramatically different image sizes at different resolutions. Ideally, this could enable developers to start with mobile-optimized images in their HTML and specify a larger size to be used for users with larger screen resolutions -- without requesting both image sizes, and without UA sniffing.
