@@ -1,4 +1,4 @@
-# Note: Project no longer recommended!
+:warning: This project is archived and the repository is no longer maintained. 
 
 We recommend you use picturefill instead. https://github.com/scottjehl/picturefill
 
